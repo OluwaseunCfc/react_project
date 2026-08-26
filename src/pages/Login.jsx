@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Login() {
   return (
     <div className="auth-page login-page">
-      <div className="auth-card login-container">
+      <div className="auth-card login-container" data-aos="fade-up">
         <h1>Welcome Back</h1>
 
         <form onSubmit={(e) => e.preventDefault()}>

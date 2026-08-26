@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Signup() {
   return (
     <div className="auth-page signup-page">
-      <div className="auth-card signup-container">
+      <div className="auth-card signup-container" data-aos="fade-up">
         <h1>Join Finpay</h1>
 
         <form onSubmit={(e) => e.preventDefault()}>

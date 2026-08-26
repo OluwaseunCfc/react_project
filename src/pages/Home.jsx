@@ -46,21 +46,25 @@ const figures = [
   { value: "10+", label: "Months of runway" },
 ];
 
+/* Cards in a row reveal one after another. Kept short so the last card
+   never feels like it is lagging behind on a fast scroll. */
+const stagger = (i) => i * 100;
+
 function Home() {
   return (
     <div className="container">
       {/* ---------- Experience section ---------- */}
       <section className="experience">
-        <h6 className="eyebrow" data-aos="fade-right">
+        <h6 className="eyebrow" data-aos="fade-up">
           Future payment
         </h6>
 
         <div className="row g-3 g-lg-4 align-items-end mt-2 experience-text">
           <div className="col-12 col-lg-6">
-            <h2 data-aos="fade-right">Experience that grows with your scale.</h2>
+            <h2 data-aos="fade-up">Experience that grows with your scale.</h2>
           </div>
           <div className="col-12 col-lg-6">
-            <p data-aos="fade-right">
+            <p data-aos="fade-up" data-aos-delay="100">
               Design a financial operating system that works for your business
               and streamlined cashflow management
             </p>
@@ -69,14 +73,16 @@ function Home() {
 
         {/* 1 col on phones -> 2 on tablets -> 3 on desktop */}
         <div className="row g-4 mt-4 mt-lg-5">
-          {features.map(({ icon, title, text }) => (
+          {features.map(({ icon, title, text }, i) => (
             <div className="col-12 col-sm-6 col-lg-4" key={title}>
-              <div className="experience-content">
-                <div className="icons" data-aos="fade-up">
-                  {icon}
-                </div>
-                <h3 data-aos="fade-up">{title}</h3>
-                <p data-aos="fade-up">{text}</p>
+              <div
+                className="experience-content"
+                data-aos="fade-up"
+                data-aos-delay={stagger(i)}
+              >
+                <div className="icons">{icon}</div>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </div>
             </div>
           ))}
@@ -88,18 +94,20 @@ function Home() {
         <h6 className="eyebrow" data-aos="fade-up">
           Why us
         </h6>
-        <h2 data-aos="fade-up">Why they prefer Finpay</h2>
+        <h2 data-aos="fade-up" data-aos-delay="100">
+          Why they prefer Finpay
+        </h2>
 
         <div className="row g-4">
           <div className="col-12 col-lg-6">
-            <div className="prefer-card">
-              <h2 data-aos="fade-right">3k+</h2>
-              <h4 data-aos="fade-right">Businesses already running on Finpay</h4>
+            <div className="prefer-card" data-aos="fade-up">
+              <h2>3k+</h2>
+              <h4>Businesses already running on Finpay</h4>
             </div>
           </div>
 
           <div className="col-12 col-lg-6">
-            <div className="prefer-card" data-aos="fade-down">
+            <div className="prefer-card" data-aos="fade-up" data-aos-delay="100">
               <h4>Instant withdraw your funds at anytime</h4>
               <div className="experience-icons mt-4">
                 <h2 className="ex-icon1">X</h2>
@@ -111,9 +119,9 @@ function Home() {
         </div>
 
         {/* wide card: text + summary panel, stacks under lg */}
-        <div className="prefer-wide-card">
+        <div className="prefer-wide-card" data-aos="fade-up">
           <div className="row g-4 align-items-center">
-            <div className="col-12 col-lg-5 prefer-text" data-aos="fade-up">
+            <div className="col-12 col-lg-5 prefer-text">
               <h4>No asset volatility</h4>
               <p>
                 Generate returns on your cash reserves without making any
@@ -126,7 +134,7 @@ function Home() {
                 <div className="d-flex justify-content-between align-items-start gap-3">
                   <div className="prefer-img-content">
                     <h6 className="eyebrow">Summary</h6>
-                    <h2 data-aos="fade-up">$1,876,580</h2>
+                    <h2>$1,876,580</h2>
                   </div>
 
                   <details className="prefer-details">
@@ -136,12 +144,7 @@ function Home() {
                   </details>
                 </div>
 
-                <img
-                  src="/prefer.jpg"
-                  alt="Balance growth chart"
-                  loading="lazy"
-                  data-aos="fade-up"
-                />
+                <img src="/prefer.jpg" alt="Balance growth chart" loading="lazy" />
               </div>
             </div>
           </div>
@@ -150,15 +153,21 @@ function Home() {
 
       {/* ---------- Maximize section ---------- */}
       <section className="maximize-section">
-        <h6 className="eyebrow">Step</h6>
-        <h2 data-aos="fade-up">
+        <h6 className="eyebrow" data-aos="fade-up">
+          Step
+        </h6>
+        <h2 data-aos="fade-up" data-aos-delay="100">
           Maximize your return with a Reserve account that generates.
         </h2>
 
         <div className="row g-4 mt-4 mt-lg-5">
-          {steps.map(({ number, title, text }) => (
+          {steps.map(({ number, title, text }, i) => (
             <div className="col-12 col-md-6 col-lg-4" key={number}>
-              <div className="maximize-card" data-aos="fade-right">
+              <div
+                className="maximize-card"
+                data-aos="fade-up"
+                data-aos-delay={stagger(i)}
+              >
                 <h2>{number}</h2>
                 <h3>{title}</h3>
                 <p>{text}</p>
@@ -170,26 +179,35 @@ function Home() {
 
       {/* ---------- Mission section ---------- */}
       <section className="mission">
-        <h6 className="eyebrow">Our mission</h6>
-        <h2 data-aos="fade-up">
+        <h6 className="eyebrow" data-aos="fade-up">
+          Our mission
+        </h6>
+        <h2 data-aos="fade-up" data-aos-delay="100">
           We&apos;ve helped <br className="d-none d-sm-inline" /> innovative
           companies
         </h2>
-        <p className="text-center" data-aos="fade-up">
+        <p className="text-center" data-aos="fade-up" data-aos-delay="200">
           Hundreds of all sizes and across all industries have made a big
           improvement with us
         </p>
 
         <div className="row g-4 mt-4 mt-lg-5 text-center">
-          {figures.map(({ value, label }) => (
-            <div className="col-12 col-sm-4 figure" key={label} data-aos="fade-up">
+          {figures.map(({ value, label }, i) => (
+            <div
+              className="col-12 col-sm-4 figure"
+              key={label}
+              data-aos="fade-up"
+              data-aos-delay={stagger(i)}
+            >
               <h2>{value}</h2>
               <p>{label}</p>
             </div>
           ))}
         </div>
 
-        <h5 className="plan text-center mt-5">CHOOSE PLAN:</h5>
+        <h5 className="plan text-center mt-5" data-aos="fade-up">
+          CHOOSE PLAN:
+        </h5>
 
         <div className="row g-4 mt-3 amount-card justify-content-center">
           <div className="col-12 col-md-6 d-flex justify-content-center">
@@ -202,7 +220,7 @@ function Home() {
           </div>
 
           <div className="col-12 col-md-6 d-flex justify-content-center">
-            <div className="card-2" data-aos="fade-up">
+            <div className="card-2" data-aos="fade-up" data-aos-delay="100">
               <h2>Premium</h2>
               <div className="amount">
                 <span>$2.99/month</span> <MdArrowOutward />
@@ -213,19 +231,29 @@ function Home() {
 
         {/* ---------- Try it now ---------- */}
         <div className="try-it">
-          <h6 className="eyebrow">Try it now</h6>
+          <h6 className="eyebrow" data-aos="fade-up">
+            Try it now
+          </h6>
 
           <div className="row g-4 align-items-center mt-2">
-            <div className="col-12 col-lg-7 try-it-text">
-              <h2 data-aos="fade-up">Ready to level up your payment process?</h2>
-              <p data-aos="fade-up">
+            <div
+              className="col-12 col-lg-7 try-it-text"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <h2>Ready to level up your payment process?</h2>
+              <p>
                 Supports small businesses with invoicing, powerful integration,
                 and cashflow management tools.
               </p>
             </div>
 
             <div className="col-12 col-lg-5">
-              <div className="try-it-btn justify-content-lg-end" data-aos="fade-right">
+              <div
+                className="try-it-btn justify-content-lg-end"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 <button className="btn-1" type="button">Get Started Now</button>
                 <button className="btn-2" type="button">
                   Learn More <MdArrowOutward />
