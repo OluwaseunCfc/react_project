@@ -1,11 +1,4 @@
-/* ============================================================
-   FINPAY — Global, fully responsive stylesheet
-   Breakpoints (Bootstrap 5): sm 576 · md 768 · lg 992 · xl 1200 · xxl 1400
-   Fluid sizing is done with clamp() so everything scales between
-   breakpoints instead of jumping.
-   ============================================================ */
 
-/* ---------- 1. Reset & tokens ---------- */
 *,
 *::before,
 *::after {
@@ -55,7 +48,6 @@ body {
 
 img,
 picture,
-svg,
 video {
   max-width: 100%;
   height: auto;
@@ -63,6 +55,11 @@ video {
 
 img {
   display: block;
+}
+
+/* inline icons keep their own 1em box - only cap the width */
+svg {
+  max-width: 100%;
 }
 
 /* never let a long word blow out a narrow screen */
@@ -145,7 +142,13 @@ textarea {
 .navbar-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.navbar-actions > a {
+  display: flex;
+  text-decoration: none;
 }
 
 @media (max-width: 991.98px) {
@@ -162,8 +165,14 @@ textarea {
     display: inline-block;
   }
 
-  .navbar-actions .btn {
+  /* full-width, thumb-friendly targets on phones/tablets */
+  .navbar-actions > a {
     flex: 1 1 8rem;
+  }
+
+  .navbar-actions .btn {
+    width: 100%;
+    min-height: 2.75rem;
   }
 }
 
@@ -455,7 +464,7 @@ textarea {
   height: clamp(2.75rem, 8vw, 4.6875rem);
 }
 
-/* summary/chart panel — no longer absolutely positioned */
+/* summary/chart panel - no longer absolutely positioned */
 .prefer-image {
   background-color: #fff;
   padding: clamp(1rem, 2.5vw, 1.25rem);
@@ -640,8 +649,10 @@ textarea {
   margin-top: clamp(2.5rem, 7vw, 5rem);
 }
 
+/* reset the centering inherited from `.mission .eyebrow` */
 .try-it .eyebrow {
   color: #3f8795;
+  text-align: start;
 }
 
 .try-it-text h2 {
@@ -743,6 +754,7 @@ textarea {
   color: var(--third-color-main);
   font-size: clamp(1.5rem, 4vw, 2rem);
   line-height: 1;
+  margin-top: 0; /* reset the generic .footer-col a spacing */
   transition: color 0.25s ease;
 }
 

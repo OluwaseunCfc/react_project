@@ -1,52 +1,52 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+
+const links = [
+  { label: 'Home', to: '/' },
+  { label: 'Products', to: '/' },
+  { label: 'Customers', to: '/' },
+  { label: 'Pricing', to: '/' },
+  { label: 'Learn', to: '/' },
+]
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-sm">
-      <div className="container d-flex flex-grow-1 align-items-center">
-
-        <Link className="navbar-brand me-3" to="/">Finpay</Link>
+    /* expand-lg + a toggler that shows below lg keeps the two in sync
+       (previously expand-sm with a d-lg-none toggler showed both states at once) */
+    <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
+      <div className="container">
+        <Link className="navbar-brand" to="/">Finpay</Link>
 
         <button
-          className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId">
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="collapsibleNavId">
-
-          <ul className="navbar-nav d-flex flex-grow-1 justify-content-evenly">
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Products</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Customers</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Pricing</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Learn</Link>
-            </li>
-
+          <ul className="navbar-nav mb-2 mb-lg-0 flex-grow-1 justify-content-lg-center gap-lg-2 gap-xl-4">
+            {links.map(({ label, to }) => (
+              <li className="nav-item" key={label}>
+                <NavLink className="nav-link" to={to}>{label}</NavLink>
+              </li>
+            ))}
           </ul>
 
-          <Link to="/login">
-            <button className="btn my-2 my-sm-0 me-2">Login</button>
-          </Link>
+          <div className="navbar-actions">
+            <Link to="/login">
+              <button className="btn btn-brand-outline" type="button">Login</button>
+            </Link>
 
-          <Link to="/signup">
-            <button className="btn my-2 my-sm-0">Sign Up</button>
-          </Link>
-
+            <Link to="/signup">
+              <button className="btn btn-brand" type="button">Sign Up</button>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

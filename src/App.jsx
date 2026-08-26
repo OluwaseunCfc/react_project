@@ -13,27 +13,42 @@ import Footer from './Components/Footer'
 function App() {
 
   useEffect(() => {
-    AOS.init({ duration: 1000 })
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 40,
+      // scroll animations can leave content hidden / cause sideways shift
+      // on small touch screens, so they are skipped there
+      disable: () => window.innerWidth < 576,
+    })
+
+    // keep offsets correct when the viewport changes (rotate / resize)
+    const handleResize = () => AOS.refresh()
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <Router>
-        <Navbar/>
-      <Routes>
-        <Route 
-          path="/" element={
-            <>
-              <Banner/>
-              <Home/>
-            </>
-          } 
+      <Navbar />
+      <main>
+        <Routes>
+          <Route
+            path="/" element={
+              <>
+                <Banner />
+                <Home />
+              </>
+            }
           />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
 
-      </Routes>
-          <Footer/>
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   )
 }

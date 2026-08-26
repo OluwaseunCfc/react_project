@@ -1,37 +1,57 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Signup() {
   return (
-   <>
-     <div className='signup-page'>
-       <div className="signup-container">
-            <h1 className='signup-heading text-center mb-3' style={{"color": "#2A8E9E"}}>Join Finpay</h1>
+    <div className="auth-page signup-page">
+      <div className="auth-card signup-container">
+        <h1>Join Finpay</h1>
 
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Full Name</label>
-                    <input type="text" className="form-control" name="" id="" aria-describedby="helpId" placeholder="full name" required/>
-                </div>
-            
-                 <div className="mb-3">
-                    <label htmlFor="" className="form-label">Email</label>
-                    <input type="email" className="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter your email" required/>
-                </div>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="signup-name">Full Name</label>
+            <input
+              id="signup-name"
+              type="text"
+              className="form-control"
+              placeholder="Full name"
+              autoComplete="name"
+              required
+            />
+          </div>
 
-                {/* <div className="mb-3">
-                    <label htmlFor="" className="form-label">Phone no</label>
-                    <input type="text" className="form-control" name="" id="" aria-describedby="helpId" placeholder="phone number" required/>
-                </div> */}
+          <div className="mb-3">
+            <label className="form-label" htmlFor="signup-email">Email</label>
+            <input
+              id="signup-email"
+              type="email"
+              className="form-control"
+              placeholder="Enter your email"
+              autoComplete="email"
+              required
+            />
+          </div>
 
-            <div className="mb-3">
-                <label htmlFor="" className="form-label">Password</label>
-                <input type="password" className="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter your password" required/>
-            </div>
-            
-            <button type="submit" className='btn '>Submit</button>
-       </div>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="signup-password">Password</label>
+            <input
+              id="signup-password"
+              type="password"
+              className="form-control"
+              placeholder="Enter your password"
+              autoComplete="new-password"
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn btn-brand w-100 mt-2">Submit</button>
+        </form>
+
+        <p className="text-center mt-3 mb-0" style={{ fontSize: '0.9rem' }}>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
-   </>
-
   )
 }
 
