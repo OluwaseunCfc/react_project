@@ -122,9 +122,7 @@ textarea {
   transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link:focus,
-.navbar .nav-link.active {
+.navbar .nav-link:hover {
   color: #fff;
   border-bottom-color: var(--primary-color);
 }
